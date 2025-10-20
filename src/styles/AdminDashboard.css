@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Algerian&display=swap');
+/* Removed invalid Google Fonts import for Algerian */
 
 .dashboard-bg {
   background-image: url('../assets/Admin_Dashoard_bg.jpg');
@@ -55,14 +55,14 @@
 
 .welcome-text {
   font-size: 72px;
-  font-family: 'Algerian', serif;
+  font-family: 'Segoe UI', 'Georgia', serif; /* Fallback for Algerian */
   color: #ffffff;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .admin-name {
   font-size: 36px;
-  font-family: 'Algerian', serif;
+  font-family: 'Segoe UI', 'Georgia', serif;
   color: #ffffff;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
 }
@@ -88,6 +88,7 @@
 .dashboard-tabs button:hover {
   background-color: #0056b3;
 }
+
 .logout-button {
   width: 40px;
   height: 40px;
@@ -113,7 +114,6 @@
   font-weight: bold;
 }
 
-
 .sidebar-menu {
   position: absolute;
   top: 60px;
@@ -127,6 +127,21 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.sidebar-menu button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.sidebar-menu button:hover {
+  background-color: #0056b3;
 }
 
 .sidebar-item {
