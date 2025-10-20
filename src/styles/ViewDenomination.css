@@ -1,0 +1,111 @@
+.filter-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* spacing between From, To, and Fetch */
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between label and input/button */
+}
+
+.filter-group label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-row input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.filter-row button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-row button:hover {
+  background-color: #0056b3;
+}
+
+.view-bg {
+  background: url('../assets/View_Denomination.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.view-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.view-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #222;
+}
+
+.denom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.denom-table th,
+.denom-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.denom-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e8e8e8;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .denom-table th,
+  .denom-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .summary-row {
+    flex-direction: column;
+    font-size: 18px;
+    gap: 10px;
+  }
+}

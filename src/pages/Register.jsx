@@ -1,24 +1,54 @@
-import { useState } from 'react';
-import axios from 'axios';
-import RolePicker from '../components/RolePicker';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import api from '../apis';
+import './AuthForm.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Register() {
-  const [form, setForm] = useState({ role: '', name: '', mobile: '', password: '', email: '' });
+function Register() {
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('Employee');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    await axios.post('/api/auth/register', form);
-    alert('Registered successfully');
+  const handleRegister = async e => {
+    e.preventDefault();
+    try {
+      await api.post('/auth/register', {
+        Emp_Name: name,
+        Role: role,
+        Mobile_No: mobile,
+        Email_ID: email,
+        Password: password
+      });
+
+      toast.success('Registration successful');
+      setTimeout(() => navigate('/'), 1500);
+    } catch {
+      toast.error('Registration failed. Please try again.');
+    }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <RolePicker value={form.role} onChange={role => setForm({ ...form, role })} />
-      <input placeholder="Name" onChange={e => setForm({ ...form, name: e.target.value })} />
-      <input placeholder="Mobile" onChange={e => setForm({ ...form, mobile: e.target.value })} />
-      <input placeholder="Email" onChange={e => setForm({ ...form, email: e.target.value })} />
-      <input placeholder="Password" onChange={e => setForm({ ...form, password: e.target.value })} />
-      <button onClick={handleRegister}>Register</button>
+    <div className="auth-bg">
+      <form className="auth-form" onSubmit={handleRegister}>
+        <h2>Register</h2>
+        <input type="text" placeholder="Full Name" onChange={e => setName(e.target.value)} required />
+        <select value={role} onChange={e => setRole(e.target.value)}>
+          <option value="Employee">Employee</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <input type="tel" placeholder="Mobile Number" onChange={e => setMobile(e.target.value)} required />
+        <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} required />
+        <button type="submit">Register</button>
+        <p>Already have an account? <Link to="/">Log In</Link></p>
+      </form>
+      <ToastContainer />
     </div>
   );
 }
+
+export default Register;
