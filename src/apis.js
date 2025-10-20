@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+// ✅ Use dynamic base URL based on environment
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api',
 });
 
 // ✅ Attach token to every request
